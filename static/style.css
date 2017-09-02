@@ -1,0 +1,17 @@
+body {
+  font-size: 16px;
+}
+
+.navigation {
+  list-style: none;
+}
+
+.navigation li {
+  display: inline;
+  text-align: center;
+  padding: 20px;
+}
+
+.thumb-nail {
+  max-height: 300px;
+}
