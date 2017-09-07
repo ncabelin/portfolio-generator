@@ -78,159 +78,168 @@ include 'includes/admin_header.php';
 <?php if ($error) {
   echo "<div class='alert alert-danger text-center'>$error</div>";
 } ?>
-<div class="container">
-  <div class="row">
+<div class="wrap">
+  <div class="container">
+    <div class="row">
 
-    <div class="col-md-4">
-      <?php
-      if ($stmt->num_rows > 0) {
-        while ($stmt->fetch()) { // EDIT FORM ?>
-          <h3>Edit Project</h3>
+      <div class="col-md-4">
+        <?php
+        if ($stmt->num_rows > 0) {
+          while ($stmt->fetch()) { // EDIT FORM ?>
+            <h3>Edit Project</h3>
+            <form method="POST">
+              <input type="hidden" name="edit_id" value="<?php echo $id; ?>">
+              <div class="form-group">
+                <label>Title</label>
+                <input type="text" name="title" class="form-control" value="<?php echo $title; ?>">
+              </div>
+              <div class="form-group">
+                <label>Github URL</label>
+                <input type="text" name="github_url" class="form-control" value="<?php echo $github_url; ?>">
+              </div>
+              <div class="form-group">
+                <label>Live URL</label>
+                <input type="text" name="live_url" class="form-control" value="<?php echo $live_url; ?>">
+              </div>
+              <div class="form-group">
+                <label>Image URL</label>
+                <input type="text" name="image" class="form-control" value="<?php echo $image; ?>">
+              </div>
+              <div class="form-group">
+                <label>Details</label>
+                <textarea name="details" class="form-control"><?php echo $details; ?></textarea>
+              </div>
+              <div class="form-group">
+                <?php if ($type === 'Fullstack') { ?>
+                  <select name="type">
+                    <option value="Fullstack" selected>Fullstack</option>
+                    <option value="Wordpress">Wordpress</option>
+                    <option value="Microservices">Micro-services</option>
+                    <option value="Games">Games</option>
+                  </select>
+                <?php } elseif ($type === 'Wordpress') { ?>
+                  <select name="type">
+                    <option value="Fullstack">Fullstack</option>
+                    <option value="Wordpress" selected>Wordpress</option>
+                    <option value="Microservices">Micro-services</option>
+                    <option value="Games">Games</option>
+                    <option value="Other">Other</option>
+                  </select>
+                <?php } elseif ($type === 'Microservices') { ?>
+                  <select name="type">
+                    <option value="Fullstack">Fullstack</option>
+                    <option value="Wordpress">Wordpress</option>
+                    <option value="Microservices" selected>Micro-services</option>
+                    <option value="Games">Games</option>
+                    <option value="Other">Other</option>
+                  </select>
+                <?php } elseif ($type === 'Games') { ?>
+                  <select name="type">
+                    <option value="Fullstack">Fullstack</option>
+                    <option value="Wordpress">Wordpress</option>
+                    <option value="Microservices">Micro-services</option>
+                    <option value="Games" selected>Games</option>
+                    <option value="Other">Other</option>
+                  </select>
+                <?php } else { ?>
+                  <select name="type">
+                    <option value="Fullstack">Fullstack</option>
+                    <option value="Wordpress">Wordpress</option>
+                    <option value="Microservices">Micro-services</option>
+                    <option value="Games">Games</option>
+                    <option value="Other" selected>Other</option>
+                  </select>
+                <?php } ?>
+              </div>
+              <input type="submit" class="btn btn-default" value="Save">
+              <a href="admin_projects.php" class="btn btn-default">Cancel</a>
+            </form>
+        <?php
+          }
+        } else { // ADD FORM ?>
+          <h3>Add Project</h3>
           <form method="POST">
-            <input type="hidden" name="edit_id" value="<?php echo $id; ?>">
             <div class="form-group">
               <label>Title</label>
-              <input type="text" name="title" class="form-control" value="<?php echo $title; ?>">
+              <input type="text" name="title" class="form-control">
             </div>
             <div class="form-group">
               <label>Github URL</label>
-              <input type="text" name="github_url" class="form-control" value="<?php echo $github_url; ?>">
+              <input type="text" name="github_url" class="form-control">
             </div>
             <div class="form-group">
               <label>Live URL</label>
-              <input type="text" name="live_url" class="form-control" value="<?php echo $live_url; ?>">
+              <input type="text" name="live_url" class="form-control">
             </div>
             <div class="form-group">
               <label>Image URL</label>
-              <input type="text" name="image" class="form-control" value="<?php echo $image; ?>">
+              <input type="text" name="image" class="form-control">
             </div>
             <div class="form-group">
               <label>Details</label>
-              <textarea name="details" class="form-control"><?php echo $details; ?></textarea>
+              <textarea name="details" class="form-control"></textarea>
             </div>
             <div class="form-group">
-              <?php if ($type === 'Fullstack') { ?>
-                <select name="type">
-                  <option value="Fullstack" selected>Fullstack</option>
-                  <option value="Wordpress">Wordpress</option>
-                  <option value="Microservices">Micro-services</option>
-                  <option value="Games">Games</option>
-                </select>
-              <?php } elseif ($type === 'Wordpress') { ?>
-                <select name="type">
-                  <option value="Fullstack">Fullstack</option>
-                  <option value="Wordpress" selected>Wordpress</option>
-                  <option value="Microservices">Micro-services</option>
-                  <option value="Games">Games</option>
-                  <option value="Other">Other</option>
-                </select>
-              <?php } elseif ($type === 'Microservices') { ?>
-                <select name="type">
-                  <option value="Fullstack">Fullstack</option>
-                  <option value="Wordpress">Wordpress</option>
-                  <option value="Microservices" selected>Micro-services</option>
-                  <option value="Games">Games</option>
-                  <option value="Other">Other</option>
-                </select>
-              <?php } elseif ($type === 'Games') { ?>
-                <select name="type">
-                  <option value="Fullstack">Fullstack</option>
-                  <option value="Wordpress">Wordpress</option>
-                  <option value="Microservices">Micro-services</option>
-                  <option value="Games" selected>Games</option>
-                  <option value="Other">Other</option>
-                </select>
-              <?php } else { ?>
-                <select name="type">
-                  <option value="Fullstack">Fullstack</option>
-                  <option value="Wordpress">Wordpress</option>
-                  <option value="Microservices">Micro-services</option>
-                  <option value="Games">Games</option>
-                  <option value="Other" selected>Other</option>
-                </select>
-              <?php } ?>
+              <label>Type</label>
+              <select name="type">
+                <option value="Fullstack">Fullstack</option>
+                <option value="Wordpress">Wordpress</option>
+                <option value="Microservices">Micro-services</option>
+                <option value="Games">Games</option>
+                <option value="Other">Other</option>
+              </select>
             </div>
-            <input type="submit" class="btn btn-default" value="Save">
-            <a href="admin_projects.php" class="btn btn-default">Cancel</a>
+            <input type="submit" class="btn btn-default" value="Add">
           </form>
-      <?php
-        }
-      } else { // ADD FORM ?>
-        <h3>Add Project</h3>
-        <form method="POST">
-          <div class="form-group">
-            <label>Title</label>
-            <input type="text" name="title" class="form-control">
-          </div>
-          <div class="form-group">
-            <label>Github URL</label>
-            <input type="text" name="github_url" class="form-control">
-          </div>
-          <div class="form-group">
-            <label>Live URL</label>
-            <input type="text" name="live_url" class="form-control">
-          </div>
-          <div class="form-group">
-            <label>Image URL</label>
-            <input type="text" name="image" class="form-control">
-          </div>
-          <div class="form-group">
-            <label>Details</label>
-            <textarea name="details" class="form-control"></textarea>
-          </div>
-          <div class="form-group">
-            <label>Type</label>
-            <select name="type">
-              <option value="Fullstack">Fullstack</option>
-              <option value="Wordpress">Wordpress</option>
-              <option value="Microservices">Micro-services</option>
-              <option value="Games">Games</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <input type="submit" class="btn btn-default" value="Add">
-        </form>
-      <?php
-      }
-      ?>
-    </div>
-
-    <div class="col-md-8">
-      <ul class="list-group">
         <?php
-          if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-              $id = $row['id'];
-              $title = $row['title'];
-              $type = $row['type'];
-              $github_url = $row['github_url'];
-              $live_url = $row['live_url'];
-              $details = $row['details'];
-              $image = $row['image'];
-            ?>
-              <li class='list-group-item'><strong><?php echo $title . '</strong> - ' . $type; ?>
-                <br>
-                <?php echo $github_url . ' @ ' . $live_url; ?>
-                <br>
-                <img src="<?php echo $image; ?>" class="img-responsive thumb-nail">
-                <br>
-                <p><?php echo $details; ?></p>
-                <hr>
-                <a href='admin_project_skills.php?id=<?php echo $id; ?>' class='btn btn-default btn-sm'>ADD SKILLS</a>
-                <a href='admin_projects.php?edit=<?php echo $id; ?>' class='btn btn-default btn-sm'>EDIT</a>
-                <form method="POST" style="display:inline;">
-                  <input type="hidden" value="<?php echo $id; ?>" name="delete_id">
-                  <button class='btn btn-default btn-sm'>DELETE</button>
-                </form>
-              </li>
-          <?php
-            }
-          }
+        }
         ?>
-      </ul>
+      </div>
+
+      <div class="col-md-8">
+        <ul class="list-group">
+          <?php
+            if ($result->num_rows > 0) {
+              while($row = $result->fetch_assoc()) {
+                $id = $row['id'];
+                $title = $row['title'];
+                $type = $row['type'];
+                $github_url = $row['github_url'];
+                $live_url = $row['live_url'];
+                $details = $row['details'];
+                $image = $row['image'];
+              ?>
+                <li class='list-group-item'><strong><?php echo $title . '</strong> - ' . $type; ?>
+                  <br>
+                  <?php echo $github_url . ' @ ' . $live_url; ?>
+                  <br>
+                  <img src="<?php echo $image; ?>" class="img-responsive thumb-nail">
+                  <br>
+                  <p><?php echo $details; ?></p>
+                  <hr>
+                  <a href='admin_project_skills.php?id=<?php echo $id; ?>' class='btn btn-default btn-sm'>ADD SKILLS</a>
+                  <a href='admin_projects.php?edit=<?php echo $id; ?>' class='btn btn-default btn-sm'>EDIT</a>
+                  <form method="POST" style="display:inline;">
+                    <input type="hidden" value="<?php echo $id; ?>" name="delete_id">
+                    <button class='btn btn-default btn-sm'>DELETE</button>
+                  </form>
+                </li>
+            <?php
+              }
+            }
+          ?>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
+<?php
+include 'includes/scripts.php';
+?>
+<script>
+$('.heading,.navigation').css('padding','20px');
+$('.navigation li a').css('color','white');
+</script>
 <?php
 include 'includes/footer.php';
 ?>

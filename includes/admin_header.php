@@ -1,5 +1,5 @@
-<nav class="container text-center">
-  <h1>Admin</h1>
+<nav class="text-center">
+  <h1 class="heading">Admin</h1>
   <ul class="navigation">
     <li><a href="/">Home</a></li>
     <?php if ($_SESSION['username']) {

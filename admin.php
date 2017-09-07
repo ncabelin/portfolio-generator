@@ -18,11 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       }
     }
   }
-  //$conn.close();
 }
 include 'includes/admin_header.php';
 ?>
-<div class="container">
+<div class="container wrap">
   <div class="row">
     <?php if (!$_SESSION['username']) { ?>
       <div class="col-md-4 col-md-offset-4">
@@ -42,5 +41,15 @@ include 'includes/admin_header.php';
 </div>
 <?php
 include 'includes/scripts.php';
+?>
+<script>
+$('.heading').animate({
+  padding: '20px'
+});
+$('.navigation').animate({
+  padding: '20px'
+});
+</script>
+<?php
 include 'includes/footer.php';
 ?>

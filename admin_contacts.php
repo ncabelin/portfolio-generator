@@ -73,6 +73,7 @@ include 'includes/admin_header.php';
 <?php if ($error) {
   echo "<div class='alert alert-danger text-center'>$error</div>";
 } ?>
+<div class="wrap">
 <div class="container">
   <div class="row">
 
@@ -144,6 +145,14 @@ include 'includes/admin_header.php';
     </div>
   </div>
 </div>
+</div>
+<?php
+include 'includes/scripts.php';
+?>
+<script>
+$('.heading,.navigation').css('padding','20px');
+$('.navigation li a').css('color','white');
+</script>
 <?php
 include 'includes/footer.php';
 ?>
