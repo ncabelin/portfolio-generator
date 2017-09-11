@@ -82,7 +82,7 @@ h1.heading {
   margin: 5px; }
 
 .wrap, .modal-body {
-  background: linear-gradient(rgba(3, 117, 180, 0.7), rgba(3, 117, 180, 0.7)), url("http://res.cloudinary.com/dd6kwd0zn/image/upload/q_auto:eco/v1503385802/markus-spiske-153926_2_f4opoy.jpg") center center fixed;
+  background: linear-gradient(rgba(3, 117, 180, 0.7), rgba(3, 117, 180, 0.7)), url("http://res.cloudinary.com/dd6kwd0zn/image/upload/q_auto:eco/v1503385802/markus-spiske-153926_2_f4opoy.jpg") fixed center center fixed;
   background-size: cover;
   height: 100%; }
 
